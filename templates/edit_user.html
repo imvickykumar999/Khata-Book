@@ -1,0 +1,28 @@
+
+{% extends 'layout.html' %}
+{% block body %}
+
+  <div class='row'>
+    <div class='col-5 mx-auto'>
+
+      <h3>Edit File</h3><hr>
+      <form method='post' enctype='multipart/form-data' action='{{url_for("edit_user", database=database, table=table, uid=datas.UID)}}'>
+        
+        {% for i, j in col_name %}
+          <div class='form-group'>
+            <label> {{j.title()}} </label>
+            <input type='text' name='{{j}}' value='{{datas[j]}}' required class='form-control'>
+          </div>
+        {% endfor %}
+
+        <div class='form-group'>
+            <p><input type='file' name='file'></p>
+        </div>
+
+        <input type='submit' value='Submit' class='btn btn-primary'>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

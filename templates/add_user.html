@@ -1,0 +1,28 @@
+
+{% extends 'layout.html' %}
+{% block body %}
+
+  <div class='row'>
+    <div class='col-5 mx-auto'>
+
+      <h3>Add File</h3><hr>
+      <form method='post' enctype='multipart/form-data' action="{{url_for('add_user', database=database, table=table)}}">
+
+        {% for i, j in col_name %}
+          <div class='form-group'>
+            <label> {{j.title()}} </label>
+            <input type='text' name='{{j}}' required class='form-control'>
+          </div>
+        {% endfor %}
+
+        <div class='form-group'>
+            <p><input type='file' name='file' required></p>
+        </div>
+
+        <input type='submit' value='Submit' class='btn btn-primary'>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
